@@ -22,7 +22,7 @@ function readyNow(){
 function printBonus(array) {
   for (let employee of array) {
     $("ul").append('<h3>Name: ' + employee.name + '</h3>')
-    $("ul").append('<li>Bonus Percentage: ' + employee.bonusPercentage + '</li>')
+    $("ul").append('<li>Bonus Percentage: ' + (employee.bonusPercentage * 100) + '%</li>')
     $("ul").append('<li>New Total Compensation: ' + employee.totalCompensation + '</li>')
     $("ul").append('<li>Total Bonus: ' + employee.totalBonus + '</li>')
   }
