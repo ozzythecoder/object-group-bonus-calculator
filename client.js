@@ -16,7 +16,7 @@ function readyNow(){
       }
 
     });
-    // $( 'h2' ).mouseenter( h2MouseEnter );
+
 }   //end readyNow
 
 function printBonus(array) {
@@ -26,13 +26,10 @@ function printBonus(array) {
     $("ul").append('<li>New Total Compensation: ' + employee.totalCompensation + '</li>')
     $("ul").append('<li>Total Bonus: ' + employee.totalBonus + '</li>')
   }
-  //document.getElementById("#runBonus").style.display="none";
+
 }
 
 let doThing = true;
-// function h2MouseEnter(){
-//     console.log('in h2MouseEnter');
-// }
 
 const employees = [
   {
@@ -80,24 +77,23 @@ console.log('array of employee data: ',  employees );
 for (let employee of employees) {
   console.log(employee);
 }
+
 // This function will calculate 1 employee's bonus!
-//
+
 function calculateIndividualEmployeeBonus( employee ) {  
-  // your logic here
-  let bonusPercentage = individualBonusRules(employee);
+
+  let bonusPercentage = individualBonusRules(employee); // function to calculate full bonus percentage
   let bonusDetails = {
     name: employee.name,
-    bonusPercentage: bonusPercentage,
-    totalCompensation: Math.round(employee.annualSalary * (1 + bonusPercentage)),
-    totalBonus: Math.round(employee.annualSalary * bonusPercentage)
+    bonusPercentage: bonusPercentage, // returned from function
+    totalCompensation: Math.round(employee.annualSalary * (1 + bonusPercentage)), // round to nearest dollar
+    totalBonus: Math.round(employee.annualSalary * bonusPercentage) // round to nearest dollar
   }
   
-  // return new object with bonus results
   return bonusDetails;
 }
 
 function individualBonusRules(employee){
-  let employeeReviewRate = employee.reviewRating
   let bonusPercentage = 0;
 
   if (employee.employeeNumber.length === 4){
@@ -108,11 +104,11 @@ function individualBonusRules(employee){
     bonusPercentage -= 0.01;
   }
 
-  if (employeeReviewRate == 3){
+  if (employee.reviewRating == 3){
     bonusPercentage += 0.04;
-  } else if (employeeReviewRate == 4){
+  } else if (employee.reviewRating == 4){
     bonusPercentage += 0.06;
-  } else if (employeeReviewRate == 5){
+  } else if (employee.reviewRating == 5){
     bonusPercentage += 0.10;
   }
 
