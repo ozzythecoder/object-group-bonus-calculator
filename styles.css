@@ -1,0 +1,14 @@
+body {
+    background: #E9DECB;
+    font-family: 'Nunito', 'Arial', sans-serif;
+}
+
+h1 {
+    background-color: #5D635F;
+}
+
+button {
+    visibility: visible;
+    background-color: #445A67;
+    color: #E9DECB;
+}
