@@ -123,16 +123,7 @@ function individualBonusRules(employee){
   return bonusPercentage;
 }
 
-const atticusBonus = calculateIndividualEmployeeBonus(employees[0])
-
 let arrOfBonusDetails = [];
 for (let i = 0; i<employees.length; i++){
   arrOfBonusDetails.push(calculateIndividualEmployeeBonus(employees[i]));
 }
-console.log(arrOfBonusDetails);
-
-// function employeesDetails(employees){
-//   return arrOfBonusDetails;
-// }
-
-// employeesDetails(employees);
