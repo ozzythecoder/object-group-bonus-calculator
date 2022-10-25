@@ -103,13 +103,18 @@ function individualBonusRules(employee){
   if (employee.annualSalary > 65000) {
     bonusPercentage -= 0.01;
   }
-
-  if (employee.reviewRating == 3){
-    bonusPercentage += 0.04;
-  } else if (employee.reviewRating == 4){
-    bonusPercentage += 0.06;
-  } else if (employee.reviewRating == 5){
-    bonusPercentage += 0.10;
+  switch (employee.reviewRating) {
+    case 3:
+      bonusPercentage += 0.04;
+      break;
+    case 4:
+      bonusPercentage += 0.06;
+      break;
+    case 5:
+      bonusPercentage += 0.10;
+      break;
+    default:
+      break;
   }
 
   if (bonusPercentage > 0.13) { bonusPercentage = 0.13 };
