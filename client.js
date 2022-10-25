@@ -7,8 +7,6 @@ function readyNow(){
     console.log( 'JQ' );
 
     $( "#runBonus" ).click(function() {
-      // console.log('Button clicks');
-      // console.log(calculateIndividualEmployeeBonus(employees[0]));
       if (doThing) {
         printBonus(arrOfBonusDetails);
         doThing = false;
@@ -78,11 +76,10 @@ for (let employee of employees) {
   console.log(employee);
 }
 
-// This function will calculate 1 employee's bonus!
+// This function creates a new employee object and calculates the new salary
+function calculateNewSalary( employee ) {  
 
-function calculateIndividualEmployeeBonus( employee ) {  
-
-  let bonusPercentage = individualBonusRules(employee); // function to calculate full bonus percentage
+  let bonusPercentage = calculateBonusPercentage(employee); // function to calculate full bonus percentage
   let bonusDetails = {
     name: employee.name,
     bonusPercentage: bonusPercentage, // returned from function
@@ -93,16 +90,21 @@ function calculateIndividualEmployeeBonus( employee ) {
   return bonusDetails;
 }
 
-function individualBonusRules(employee){
+// This function calculates the bonus percentage
+function calculateBonusPercentage(employee){
   let bonusPercentage = 0;
 
+  // 4-digit employee number = 15-year tenure = 5% bonus
   if (employee.employeeNumber.length === 4){
     bonusPercentage += 0.05;
   }
 
+  // >65k salary = 1% deduction from bonus
   if (employee.annualSalary > 65000) {
     bonusPercentage -= 0.01;
   }
+
+  // Bonuses based on review ratings
   switch (employee.reviewRating) {
     case 3:
       bonusPercentage += 0.04;
@@ -117,6 +119,7 @@ function individualBonusRules(employee){
       break;
   }
 
+  // Bonuses cannot be higher than 13% or lower than 0%
   if (bonusPercentage > 0.13) { bonusPercentage = 0.13 };
   if (bonusPercentage < 0) { bonusPercentage = 0 };
 
@@ -125,5 +128,5 @@ function individualBonusRules(employee){
 
 let arrOfBonusDetails = [];
 for (let i = 0; i<employees.length; i++){
-  arrOfBonusDetails.push(calculateIndividualEmployeeBonus(employees[i]));
+  arrOfBonusDetails.push(calculateNewSalary(employees[i]));
 }
